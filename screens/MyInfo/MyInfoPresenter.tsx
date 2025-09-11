@@ -1,6 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
+import { useTheme } from "../../context/ThemeProvider";
 
 const Container = styled(View)``;
 const Title = styled(Text)``;
