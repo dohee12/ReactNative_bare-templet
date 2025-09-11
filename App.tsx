@@ -1,13 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
 import MainStack from "./stack/MainStack";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MainStack />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }

@@ -1,13 +1,27 @@
+import { TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 const Container = styled(View)``;
 const Title = styled(Text)``;
+const ThemeBtn = styled(TouchableOpacity)``;
+const ThemeBtnTitle = styled(Text)``;
 
 const MyInfoPresenter = () => {
+  // Provider Theme Context 불러오기
+  const { isDark, theme, toggleTheme } = useTheme();
+  const { backgroundColor, primary, color } = theme;
+
   return (
-    <Container>
+    <Container style={{ backgroundColor }}>
       <Title>MyInfo 화면 입니다</Title>
+      {/* 테마 변경 (light<>dark) 버튼 */}
+      <ThemeBtn style={{ backgroundColor: primary }} onPress={toggleTheme}>
+        <ThemeBtnTitle style={{ color }}>{`현재 테마 : ${
+          isDark ? "다크" : "라이트"
+        } `}</ThemeBtnTitle>
+        <ThemeBtnTitle style={{ color }}>테마 변경</ThemeBtnTitle>
+      </ThemeBtn>
     </Container>
   );
 };
