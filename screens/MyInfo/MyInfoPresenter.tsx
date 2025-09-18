@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
 import styled from "styled-components";
-import { useTheme } from "../../context/ThemeProvider";
+import { useMyTheme } from "../../context/ThemeProvider";
 
 const Container = styled(View)``;
 const Title = styled(Text)``;
@@ -10,7 +10,7 @@ const ThemeBtnTitle = styled(Text)``;
 
 const MyInfoPresenter = () => {
   // Provider Theme Context 불러오기
-  const { isDark, theme, toggleTheme } = useTheme();
+  const { isDark, theme, toggleTheme } = useMyTheme();
   const { backgroundColor, primary, color } = theme;
 
   return (

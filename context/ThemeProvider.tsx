@@ -2,14 +2,18 @@ import { createContext, useContext, useState } from "react";
 import { themeStyle } from "../styles/theme-style";
 
 // Theme 관련 props 관리 Context
-const ThemeContext = createContext({
+const MyThemeContext = createContext({
   theme: themeStyle.darkTheme,
   isDark: true,
   toggleTheme: () => {},
 });
 
 // Theme 관련 props 전달 관련 Provider
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const MyThemeProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   // Context에서 관리하는 데이터 세부내역
   // 1. Theme Dark인지 아닌지?
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -21,9 +25,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     // add Event...
   };
   return (
-    <ThemeContext.Provider value={{ isDark, theme, toggleTheme }}>
+    <MyThemeContext.Provider value={{ isDark, theme, toggleTheme }}>
       {children}
-    </ThemeContext.Provider>
+    </MyThemeContext.Provider>
   );
 };
 
@@ -31,4 +35,4 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 // Hook 생성 규칙 : useXXX 뭐시기로 시작할 것
 // useContext : 내가 만든 Context들 안의 Props를 꺼내 쓸 수 있도록
 // ㄴ 전체조건 : Provider로 만든 Playground가 적용되어있어야 함.
-export const useTheme = () => useContext(ThemeContext);
+export const useMyTheme = () => useContext(MyThemeContext);
