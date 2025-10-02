@@ -2,6 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainStack from "./MainStack";
 import { useEffect, useMemo, useReducer } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Text, View } from "react-native";
+import LoadingScreen from "../screens/Loading/LoadingScreen";
 
 //* 분기 = Authentication 인증 흐름 */
 // 분기 종류에 따른 state 정보
@@ -16,10 +18,10 @@ type Action =
   | { type: "SIGN_IN"; token: string | null }
   | { type: "SIGN_OUT" };
 
-type AuthState = {
-  로그인: () => Promise<void>;
-  로그아웃: () => void;
-  회원가입: () => Promise<void>;
+export type AuthState = {
+  signIn: () => Promise<void>;
+  signOut: () => void;
+  signUp: () => Promise<void>;
 };
 
 const AppFlow = () => {
@@ -83,7 +85,7 @@ const AppFlow = () => {
   // useMemo: 화면 Re-Rendering이 되더라도 함수 내에서 재실행시키고 싶지 않은 코드를 구현할 때 사용용
   const authValue = useMemo<AuthState>(() => {
     return {
-      로그인: async () => {
+      signIn: async () => {
         // 테스트용 더미 토큰
         const token = "dummy";
         try {
@@ -94,7 +96,7 @@ const AppFlow = () => {
         }
         dispatch({ type: "SIGN_IN", token: "dummy" });
       },
-      로그아웃: () => {
+      signOut: () => {
         try {
           // Server API...
           // Token Delete
@@ -103,7 +105,7 @@ const AppFlow = () => {
         }
         dispatch({ type: "SIGN_OUT" });
       },
-      회원가입: async () => {
+      signUp: async () => {
         // 테스트용 더미 토큰
         const token = "dummy";
         try {
@@ -116,12 +118,27 @@ const AppFlow = () => {
     };
   }, []);
 
+  // 최초 앱 실행 시, 로그인 인증 전에
+  // A. 로딩 화면 => isLoading in reducer
+  if (state.isLoading) {
+    return <LoadingScreen />;
+  }
+  // B. Tutorial or Guide(=SplashScreen)
+  // => AsyncStorage => 튜토리얼 실행 여부 판단
+
   return (
     <AuthContext.Provider value={authValue}>
       <NavigationContainer>
         {/* 로그인 인증 성공 */}
+        <>
+          <View>
+            <Text>로그인 인증 성공</Text>
+          </View>
+        </>
         {/* 로그인 인증 실패 */}
-        <MainStack />
+        <>
+          <MainStack />
+        </>
       </NavigationContainer>
     </AuthContext.Provider>
   );

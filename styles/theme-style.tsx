@@ -18,7 +18,7 @@ const darkTheme = {
 };
 
 // theme style interface
-interface ITheme {
+export interface ITheme {
   backgroundColor: string;
   color: string;
   primary: string;
