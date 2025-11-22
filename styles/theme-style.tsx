@@ -1,14 +1,14 @@
-// lignt Theme 스타일
+// Light Theme 스타일
 const lightTheme: ITheme = {
   backgroundColor: "#f8f8f8",
-  color: "#080808",
+  color: "#161616",
   primary: "#fca523",
   secondary: "#000e35",
   accent: "#6d6d6d",
   invert: "#1a1a1a",
 };
 // Dark Theme 스타일
-const darkTheme = {
+const darkTheme: ITheme = {
   backgroundColor: "#333333",
   color: "#fafafa",
   primary: "#fca523",

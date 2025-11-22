@@ -1,14 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-import { TabActions } from "@react-navigation/native";
 import MyInfo from "../screens/MyInfo";
-import { BottomTabsStackPage } from "./stack.d/BottomTab.d";
+import { BottomTabStackList } from "./stack.d/BottomTab.d";
+import HomeStack from "./HomeStack";
 
-// BottomTab 사용하기 위한 네비게이션 생성
-const Tabs = createBottomTabNavigator<BottomTabsStackPage>();
+// Bottom Tab 사용하기 위한 네비게이터 생성
+const Tabs = createBottomTabNavigator<BottomTabStackList>();
 
-// BottomTab의 각 페이지의 Header 이름 가져오기
-const getHeaderName = (screenName: keyof BottomTabsStackPage) => {
+// Bottom Tab의 각 페이지의 커스텀 Header 이름 가져오기
+const getHeaderName = (screenName: keyof BottomTabStackList) => {
   switch (screenName) {
     case "Home":
       return "메인";
@@ -24,7 +24,7 @@ const BottomTab = () => {
         headerTitle: getHeaderName(route.name),
       })}
     >
-      <Tabs.Screen name="Home" component={Home} />
+      <Tabs.Screen name="Home" component={HomeStack} />
       <Tabs.Screen name="MyInfo" component={MyInfo} />
     </Tabs.Navigator>
   );

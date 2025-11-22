@@ -15,16 +15,15 @@ const MyInfoPresenter = () => {
 
   return (
     <Container style={{ backgroundColor }}>
-      <Title>MyInfo 화면 입니다</Title>
+      <Title style={{ color }}>Myinfo 화면입니다</Title>
       {/* 테마 변경 (light<>dark) 버튼 */}
       <ThemeBtn style={{ backgroundColor: primary }} onPress={toggleTheme}>
         <ThemeBtnTitle style={{ color }}>{`현재 테마 : ${
           isDark ? "다크" : "라이트"
-        } `}</ThemeBtnTitle>
+        }`}</ThemeBtnTitle>
         <ThemeBtnTitle style={{ color }}>테마 변경</ThemeBtnTitle>
       </ThemeBtn>
     </Container>
   );
 };
-
 export default MyInfoPresenter;

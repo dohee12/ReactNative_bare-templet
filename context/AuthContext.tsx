@@ -1,5 +1,4 @@
-import { createContext } from "react";
-4;
+import { createContext, useContext } from "react";
 import { AuthState } from "../stack/AppFlow";
 
 export const AuthContext = createContext<AuthState>({
@@ -7,3 +6,5 @@ export const AuthContext = createContext<AuthState>({
   signOut: () => {},
   signUp: () => Promise.resolve(),
 });
+
+export const myAuth = () => useContext(AuthContext);

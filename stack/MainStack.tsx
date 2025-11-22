@@ -1,15 +1,24 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { BottomTabs } from "react-native-screens";
+import BottomTab from "./BottomTab";
+import FirstScreen from "../screens/FirstSreen";
 
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
   return (
     <Stack.Navigator>
-      {/* 첫 번째 자동으로 보여지는 화면 = BottomTab */}
-      <Stack.Screen name="Tabs" component={BottomTabs} />
+      {/*첫 번째 Screen = 자동으로 보여지는 화면 */}
+      <Stack.Screen
+        name="First"
+        component={FirstScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Tabs"
+        component={BottomTab}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
-
 export default MainStack;
