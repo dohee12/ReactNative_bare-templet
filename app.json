@@ -4,6 +4,9 @@
     "slug": "secondproject",
     "version": "1.0.0",
     "plugins": ["expo-secure-store"],
-    "newArchEnabled": true
+    "newArchEnabled": true,
+    "experiments": {
+      "reactCompiler": true
+    }
   }
 }

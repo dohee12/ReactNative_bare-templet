@@ -46,3 +46,27 @@ in case npm install fail ... -> add command "--force"
 ## Expo Icon Library
 
 npm install @expo/vector-icons
+
+## Use React Compiler 1.0
+
+# installation react compiler & eslinter
+
+npm install -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1
+
+# enable react compiler with expo
+
+npx expo install babel-plugin-react-compiler@beta
+
+# add command line in app.json
+
+{
+"expo": {
+"experiments": {
+"reactCompiler": true
+}
+}
+}
+
+# enable eslint with expo
+
+npx expo install eslint-plugin-react-compiler -- -D
